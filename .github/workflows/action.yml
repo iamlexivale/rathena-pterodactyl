@@ -7,7 +7,7 @@ on:
     branches:
       - master
     paths:
-      - docker/**
+      - rathena/**
 jobs:
   push:
     name: "games:${{ matrix.game }}"
@@ -29,9 +29,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v3
         with:
-          context: ./docker/${{ matrix.game }}
-          file: ./docker/${{ matrix.game }}/Dockerfile
+          context: ./rathena/${{ matrix.game }}
+          file: ./rathena/${{ matrix.game }}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/iamlexivale/docker:${{ matrix.game }}
+            ghcr.io/iamlexivale/rathena:${{ matrix.game }}
