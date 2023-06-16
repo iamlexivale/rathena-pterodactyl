@@ -7,7 +7,8 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apk add --update --no-cache git make gcc g++ mariadb-dev mariadb-client zlib-dev pcre pcre-dev libstdc++ dos2unix mysql-client bind-tools linux-headers \
             && adduser --disabled-password --home /home/container container \
-            && git clone https://github.com/rathena/rathena.git /home/container \
+            && cd /home/container \
+            && git clone https://github.com/rathena/rathena.git . \
             && ./configure --enable-packetver=20220406 \
             && make clean \
             && make server \
