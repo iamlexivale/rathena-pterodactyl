@@ -4,15 +4,17 @@
 
 FROM        --platform=$TARGETOS/$TARGETARCH alpine:latest
 
-LABEL       author="Carlos Milán Figueredo" maintainer="Khisab Kurniawan" 
+LABEL       author="Carlos Milán Figueredo" maintainer="Khisab Kurniawan"
 
-RUN         apk update \
-            && adduser -D -h /home/container container \
-            && apk add --no-cache git make gcc g++ mariadb-dev mariadb-client zlib-dev pcre pcre-dev libstdc++ dos2unix mysql-client bind-tools linux-headers
+LABEL       org.opencontainers.image.source = "https://github.com/iamlexivale/docker-images-rathena-for-pterodactyl-panel"
+LABEL       org.opencontainers.image.licenses=MIT
 
-USER 		container
-ENV  		USER=container HOME=/home/container
-WORKDIR 	/home/container
+RUN         apk add --update --no-cache git make gcc g++ mariadb-dev mariadb-client zlib-dev pcre pcre-dev libstdc++ dos2unix mysql-client bind-tools linux-headers \
+            && adduser -D -h /home/container container
+
+USER        container
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
