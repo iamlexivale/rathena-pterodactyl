@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 cd /home/container
 
 echo "Initalizing Docker container..."
