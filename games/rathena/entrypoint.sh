@@ -19,8 +19,7 @@ setup_init () {
 }
 
 install_rathena () {
-    git clone https://github.com/rathena/rathena.git /home/container
-    cd /home/container
+    git clone https://github.com/rathena/rathena.git .
     ./configure --enable-packetver=${PACKETVER}
     make clean
     make server
