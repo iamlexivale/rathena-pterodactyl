@@ -1,9 +1,6 @@
-#!/bin/sh
-# rAthena Installation Script
-#
-# Server Files: /mnt/server
+#!/bin/ash
 
-cd /mnt/server
+cd /home/container || exit 1
 
 echo "rAthena Development Team presents"
 echo "   ___   __  __"
